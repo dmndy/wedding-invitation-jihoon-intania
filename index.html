@@ -99,7 +99,9 @@
             font-weight: 700 !important;
         }
 
-        /* MODE GELAP SERAGAM */
+        /* ========================================================= */
+        /* MODE GELAP (DARK THEME) SERAGAM UNTUK SEMUA BAHASA (ID, EN, KO) */
+        /* ========================================================= */
         [data-bs-theme="dark"] body {
             color: #d1d5db !important;
         }
@@ -110,7 +112,7 @@
         [data-bs-theme="dark"] strong,
         [data-bs-theme="dark"] .font-esthetic,
         [data-bs-theme="dark"] .text-theme-auto {
-            color: #f3f4f6 !important;
+            color: #f3f4f6 !important; /* Warna Putih Lembut / Abu Terang untuk Judul & Nama */
         }
 
         [data-bs-theme="dark"] p,
@@ -118,9 +120,10 @@
         [data-bs-theme="dark"] small,
         [data-bs-theme="dark"] div,
         [data-bs-theme="dark"] .text-secondary {
-            color: #d1d5db !important;
+            color: #d1d5db !important; /* Warna Abu-abu Terang Pas untuk Isi Teks & Ucapan */
         }
 
+        /* Elemen khusus versi Korea */
         .ko-only {
             display: none !important;
         }
@@ -145,6 +148,7 @@
             height: 100%;
         }
 
+        /* Welcome Overlay Screen */
         .loading-page {
             position: fixed;
             top: 0;
@@ -155,96 +159,9 @@
             transition: opacity 0.6s ease, visibility 0.6s ease;
         }
 
+        /* Transisi Smooth Konten Utama */
         #root {
             transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        /* BINGKAI GALERI UNIFORM & PRATINJAU (SQUARE 1:1) */
-        .gallery-frame {
-            position: relative;
-            width: 100%;
-            aspect-ratio: 1 / 1;
-            overflow: hidden;
-            border-radius: 0.75rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            background-color: rgba(128, 128, 128, 0.1);
-        }
-
-        .gallery-frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-            transition: transform 0.3s ease;
-        }
-
-        .gallery-frame img:hover {
-            transform: scale(1.05);
-        }
-
-        /* LIVE CAMERA VIEW CONTAINER & BINGKAI OVERLAY HITAM */
-        .camera-container {
-            position: relative;
-            width: 100%;
-            max-width: 300px;
-            aspect-ratio: 1 / 1;
-            margin: 0 auto;
-            border-radius: 1rem;
-            overflow: hidden;
-            background: #000;
-        }
-
-        .camera-container video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* BINGKAI OVERLAY HITAM DENGAN NAMA PASANGAN */
-        .camera-frame-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            border: 8px solid #111111;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            align-items: center;
-            padding: 12px;
-        }
-
-        .camera-frame-overlay .frame-title {
-            color: #111111;
-            font-family: 'Sacramento', cursive;
-            font-size: 1.4rem;
-            font-weight: bold;
-            text-shadow: 0px 0px 4px rgba(255, 255, 255, 0.9);
-            margin: 0;
-        }
-
-        /* STYLING FOTO PRATINJAU KOTAK PERSEGI PRESISI 1:1 */
-        .preview-crop-square {
-            width: 220px;
-            height: 220px;
-            object-fit: cover;
-            border-radius: 0.75rem;
-            margin: 0 auto;
-            display: block;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        }
-
-        /* NAVIGATION BUTTON CAROUSEL GALERI TAMU */
-        .guest-carousel-control {
-            width: 32px;
-            height: 32px;
-            background-color: rgba(0, 0, 0, 0.5);
-            border-radius: 50%;
-            top: 50%;
-            transform: translateY(-50%);
         }
     </style>
 
@@ -509,13 +426,12 @@
                     </div>
                 </section>
 
-                <!-- Gallery Section -->
+                <!-- Gallery -->
                 <section class="bg-white-black pb-5 pt-3" id="gallery">
                     <div class="container">
                         <div class="border rounded-5 shadow p-3">
                             <h2 class="font-esthetic text-center py-2 m-0" data-lang-en="Gallery" data-lang-id="Galeri Foto" data-lang-ko="갤러리">Gallery</h2>
 
-                            <!-- Carousel Foto Utama -->
                             <div id="carousel-image-one" data-aos="fade-up" data-aos-duration="1500" class="carousel slide mt-4" data-bs-ride="carousel">
                                 <div class="carousel-indicators">
                                     <button type="button" data-bs-target="#carousel-image-one" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -545,35 +461,6 @@
                                     <span class="visually-hidden" data-lang-en="Next" data-lang-id="Selanjutnya" data-lang-ko="다음">Next</span>
                                 </button>
                             </div>
-
-                            <!-- Fitur Ambil Foto Tamu Via Live Camera Capture -->
-                            <div class="text-center mt-4 pt-3 border-top">
-                                <h3 class="font-esthetic mb-2" data-lang-en="Guest Moments" data-lang-id="Galeri Foto Tamu" data-lang-ko="하객 사진첩">Galeri Foto Tamu</h3>
-                                <p class="text-secondary mb-3" style="font-size: 0.85rem;" data-lang-en="Take your photo live to share your moment!" data-lang-id="Ambil foto Anda secara langsung untuk membagikan momen!" data-lang-ko="실시간으로 사진을 찍어 공유해 보세요!">Ambil foto Anda secara langsung untuk membagikan momen!</p>
-                                
-                                <button type="button" class="btn btn-outline-auto btn-sm rounded-pill shadow-sm px-4 py-2" data-bs-toggle="modal" data-bs-target="#modal-upload-photo" onclick="startCamera()">
-                                    <i class="fa-solid fa-camera me-2"></i><span data-lang-en="Take Photo" data-lang-id="Ambil Foto" data-lang-ko="사진 촬영">Ambil Foto</span>
-                                </button>
-                            </div>
-
-                            <!-- CAROUSEL SLIDER GALERI TAMU (Grid 3x3 Max 9 Foto per Slide) -->
-                            <div id="guestGalleryCarousel" class="carousel slide mt-3" data-bs-ride="false">
-                                <div class="carousel-inner" id="guestGalleryCarouselInner">
-                                    <!-- Slide pertama default -->
-                                    <div class="carousel-item active">
-                                        <div class="row g-2 guest-grid-container"></div>
-                                    </div>
-                                </div>
-                                <button class="carousel-control-prev guest-carousel-control d-none" id="guestCarouselPrev" type="button" data-bs-target="#guestGalleryCarousel" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Previous</span>
-                                </button>
-                                <button class="carousel-control-next guest-carousel-control d-none" id="guestCarouselNext" type="button" data-bs-target="#guestGalleryCarousel" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Next</span>
-                                </button>
-                            </div>
-
                         </div>
                     </div>
                 </section>
@@ -743,59 +630,9 @@
         </div>
     </div>
 
-    <!-- MODAL LIVE CAMERA ONLY DENGAN BINGKAI HITAM MULTI-LANGUAGE -->
-    <div class="modal fade" id="modal-upload-photo" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content rounded-4 border-0 bg-theme-auto shadow">
-                <div class="modal-header border-0 pb-0">
-                    <h5 class="modal-title font-esthetic fs-3" data-lang-en="Take Photo" data-lang-id="Ambil Foto" data-lang-ko="사진 촬영">Ambil Foto</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="stopCamera()"></button>
-                </div>
-                <div class="modal-body text-center">
-                    
-                    <!-- Live Camera Window & Black Frame Overlay -->
-                    <div id="cameraArea" class="camera-container mb-3 shadow-sm">
-                        <video id="webcam" autoplay playsinline></video>
-                        <div class="camera-frame-overlay">
-                            <p class="frame-title">Jihoon &amp; Intania</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Form Controls -->
-                    <form id="uploadPhotoForm">
-                        <div class="d-grid mb-3" id="captureBtnArea">
-                            <button type="button" id="btnCapture" class="btn btn-danger btn-sm rounded-pill py-2 shadow-sm" onclick="capturePhoto()">
-                                <i class="fa-solid fa-circle-dot me-1"></i>
-                                <span data-lang-en="Take Photo" data-lang-id="Jepret Foto" data-lang-ko="사진 촬영">Jepret Foto</span>
-                            </button>
-                        </div>
-
-                        <!-- Canvas Hidden for Frame Rendering -->
-                        <canvas id="photoCanvas" class="d-none"></canvas>
-                        
-                        <!-- Pratinjau Hasil Foto (Rasio 1:1 Persegi) -->
-                        <div id="photoPreviewContainer" class="d-none mb-3">
-                            <p class="text-secondary mb-2" style="font-size: 0.8rem;" data-lang-en="Frame Preview:" data-lang-id="Pratinjau Bingkai Galeri:" data-lang-ko="미리보기:">Frame Preview:</p>
-                            <img id="photoPreview" src="" alt="Preview" class="preview-crop-square">
-                        </div>
-
-                        <div class="d-grid">
-                            <button type="submit" id="btnSubmitPhoto" class="btn btn-primary btn-sm rounded-4 shadow py-2" disabled>
-                                <i class="fa-solid fa-cloud-arrow-up me-2"></i>
-                                <span id="btnSubmitPhotoText" data-lang-en="Add to Gallery" data-lang-id="Tambahkan ke Galeri" data-lang-ko="갤러리에 추가">Tambahkan ke Galeri</span>
-                            </button>
-                        </div>
-                    </form>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Scripting Logic -->
     <script>
-        // TAUTAN GOOGLE APPS SCRIPT YANG BARU DITINGKATKAN
-        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyz-Q1YoeEI3CHAVn4Ay8-0tut51Zs7gC7zxL70kbWZQasXij-oHts6TX0BdGSgScl-TQ/exec";
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwa4xUtbnicf5vLzfFkFd_HC9jxqnqc8wjesxkW4amIlIQppYnuGfbBQyhy4gp52oxeQQ/exec";
 
         const emptyCommentText = {
             en: 'No messages yet.',
@@ -951,6 +788,7 @@
                 emptyEl.innerText = emptyCommentText[lang] || emptyCommentText.en;
             }
 
+            // Reload comments to translate badges and loading status dynamically
             loadComments();
         }
 
@@ -1068,163 +906,10 @@
             }, 1000);
         }
 
-        /* LOGIKA KAMERA LIVE & OVERLAY BINGKAI HITAM */
-        let mediaStream = null;
-
-        function startCamera() {
-            const video = document.getElementById('webcam');
-            if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-                navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
-                    .then(stream => {
-                        mediaStream = stream;
-                        video.srcObject = stream;
-                    })
-                    .catch(err => {
-                        const currentLang = document.documentElement.lang || 'en';
-                        const cameraErrText = {
-                            en: "Camera access denied. Please grant camera permission in your browser.",
-                            id: "Akses kamera ditolak. Mohon beri izin akses kamera di browser Anda.",
-                            ko: "카메라 접근이 거부되었습니다. 브라우저에서 카메라 권한을 허용해 주세요."
-                        };
-                        alert(cameraErrText[currentLang] || cameraErrText.en);
-                    });
-            }
-        }
-
-        function stopCamera() {
-            if (mediaStream) {
-                mediaStream.getTracks().forEach(track => track.stop());
-                mediaStream = null;
-            }
-        }
-
-        function capturePhoto() {
-            const video = document.getElementById('webcam');
-            const canvas = document.getElementById('photoCanvas');
-            const photoPreview = document.getElementById('photoPreview');
-            const previewContainer = document.getElementById('photoPreviewContainer');
-            const btnSubmit = document.getElementById('btnSubmitPhoto');
-            const cameraArea = document.getElementById('cameraArea');
-            const captureBtnArea = document.getElementById('captureBtnArea');
-
-            if (video.readyState === video.HAVE_ENOUGH_DATA) {
-                const size = Math.min(video.videoWidth, video.videoHeight);
-                canvas.width = size;
-                canvas.height = size;
-                const ctx = canvas.getContext('2d');
-
-                const startX = (video.videoWidth - size) / 2;
-                const startY = (video.videoHeight - size) / 2;
-                ctx.drawImage(video, startX, startY, size, size, 0, 0, size, size);
-
-                const borderWidth = size * 0.04;
-                ctx.strokeStyle = "#111111";
-                ctx.lineWidth = borderWidth;
-                ctx.strokeRect(borderWidth / 2, borderWidth / 2, size - borderWidth, size - borderWidth);
-
-                ctx.fillStyle = "#111111";
-                ctx.font = `bold ${Math.floor(size * 0.08)}px 'Sacramento', cursive`;
-                ctx.textAlign = "center";
-                ctx.shadowColor = "rgba(255, 255, 255, 0.9)";
-                ctx.shadowBlur = 4;
-                ctx.fillText("Jihoon & Intania", size / 2, size - (borderWidth * 1.5));
-
-                const dataUrl = canvas.toDataURL('image/jpeg');
-                photoPreview.src = dataUrl;
-                
-                cameraArea.classList.add('d-none');
-                if (captureBtnArea) captureBtnArea.classList.add('d-none');
-                previewContainer.classList.remove('d-none');
-                
-                btnSubmit.disabled = false;
-            }
-        }
-
-        /* MANAJEMEN GALERI CAROUSEL SLIDER (MAKSIMAL 9 FOTO PER SLIDE) */
-        let guestPhotos = [];
-
-        function renderGuestGallery() {
-            const carouselInner = document.getElementById('guestGalleryCarouselInner');
-            const prevBtn = document.getElementById('guestCarouselPrev');
-            const nextBtn = document.getElementById('guestCarouselNext');
-            
-            if (!carouselInner) return;
-            carouselInner.innerHTML = '';
-
-            if (guestPhotos.length === 0) {
-                carouselInner.innerHTML = `
-                    <div class="carousel-item active">
-                        <div class="row g-2 guest-grid-container"></div>
-                    </div>`;
-                if (prevBtn) prevBtn.classList.add('d-none');
-                if (nextBtn) nextBtn.classList.add('d-none');
-                return;
-            }
-
-            const chunkSize = 9;
-            for (let i = 0; i < guestPhotos.length; i += chunkSize) {
-                const chunk = guestPhotos.slice(i, i + chunkSize);
-                const slideItem = document.createElement('div');
-                slideItem.className = `carousel-item ${i === 0 ? 'active' : ''}`;
-
-                const gridRow = document.createElement('div');
-                gridRow.className = 'row g-2 guest-grid-container';
-
-                chunk.forEach(photoSrc => {
-                    const col = document.createElement('div');
-                    col.className = 'col-4';
-                    col.innerHTML = `
-                        <div class="gallery-frame cursor-pointer" onclick="openModalImage('${photoSrc}')">
-                            <img src="${photoSrc}" alt="Guest Photo">
-                        </div>
-                    `;
-                    gridRow.appendChild(col);
-                });
-
-                slideItem.appendChild(gridRow);
-                carouselInner.appendChild(slideItem);
-            }
-
-            if (guestPhotos.length > 9) {
-                if (prevBtn) prevBtn.classList.remove('d-none');
-                if (nextBtn) nextBtn.classList.remove('d-none');
-            } else {
-                if (prevBtn) prevBtn.classList.add('d-none');
-                if (nextBtn) nextBtn.classList.add('d-none');
-            }
-        }
-
         document.addEventListener('DOMContentLoaded', () => {
             initTheme();
             startCountdown();
 
-            const modalEl = document.getElementById('modal-upload-photo');
-            if (modalEl) {
-                modalEl.addEventListener('hidden.bs.modal', function () {
-                    const cameraArea = document.getElementById('cameraArea');
-                    const previewContainer = document.getElementById('photoPreviewContainer');
-                    const btnSubmit = document.getElementById('btnSubmitPhoto');
-                    const btnSubmitText = document.getElementById('btnSubmitPhotoText');
-                    const uploadForm = document.getElementById('uploadPhotoForm');
-                    const captureBtnArea = document.getElementById('captureBtnArea');
-
-                    stopCamera();
-                    uploadForm.reset();
-                    cameraArea.classList.remove('d-none');
-                    if (captureBtnArea) captureBtnArea.classList.remove('d-none');
-                    previewContainer.classList.add('d-none');
-                    btnSubmit.disabled = true;
-                    if (btnSubmitText) {
-                        const currentLang = document.documentElement.lang || 'en';
-                        btnSubmitText.setAttribute('data-lang-en', 'Add to Gallery');
-                        btnSubmitText.setAttribute('data-lang-id', 'Tambahkan ke Galeri');
-                        btnSubmitText.setAttribute('data-lang-ko', '갤러리에 추가');
-                        setLanguage(currentLang);
-                    }
-                });
-            }
-
-            // RSVP Form Handler
             const rsvpForm = document.getElementById('rsvpForm');
             if (rsvpForm) {
                 rsvpForm.addEventListener('submit', function (e) {
@@ -1273,64 +958,6 @@
                             submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane me-2"></i><span data-lang-en="Send Message" data-lang-id="Kirim Pesan" data-lang-ko="메시지 전송">Send Message</span>';
                         }
                     });
-                });
-            }
-
-            // Photo Capture Submission Handler (DIHUBUNGKAN DENGAN UPLOAD GOOGLE DRIVE)
-            const photoPreview = document.getElementById('photoPreview');
-            const previewContainer = document.getElementById('photoPreviewContainer');
-            const uploadForm = document.getElementById('uploadPhotoForm');
-            const btnSubmit = document.getElementById('btnSubmitPhoto');
-            const btnSubmitText = document.getElementById('btnSubmitPhotoText');
-            const cameraArea = document.getElementById('cameraArea');
-            const captureBtnArea = document.getElementById('captureBtnArea');
-
-            if (uploadForm) {
-                uploadForm.addEventListener('submit', function (e) {
-                    e.preventDefault();
-                    if (photoPreview.src) {
-                        btnSubmit.disabled = true;
-                        if (btnSubmitText) btnSubmitText.innerText = 'Uploading...';
-
-                        const formData = new URLSearchParams();
-                        formData.append('photoData', photoPreview.src);
-
-                        fetch(GOOGLE_SCRIPT_URL, {
-                            method: 'POST',
-                            mode: 'no-cors',
-                            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                            body: formData.toString()
-                        })
-                        .then(() => {
-                            // Tampilkan foto langsung ke galeri tampilan halaman
-                            guestPhotos.unshift(photoPreview.src);
-                            renderGuestGallery();
-
-                            uploadForm.reset();
-                            previewContainer.classList.add('d-none');
-                            cameraArea.classList.remove('d-none');
-                            if (captureBtnArea) captureBtnArea.classList.remove('d-none');
-                            btnSubmit.disabled = true;
-
-                            stopCamera();
-                            
-                            const modal = bootstrap.Modal.getInstance(modalEl);
-                            if (modal) modal.hide();
-
-                            const currentLang = document.documentElement.lang || 'en';
-                            const alertSuccess = {
-                                en: 'Photo added to Guest Gallery successfully!',
-                                id: 'Foto berhasil ditambahkan ke Galeri Tamu!',
-                                ko: '사진이 갤러리에 추가되었습니다!'
-                            };
-                            alert(alertSuccess[currentLang] || alertSuccess.en);
-                        })
-                        .catch(err => {
-                            alert('Gagal mengunggah foto ke Google Drive, silakan coba lagi.');
-                            btnSubmit.disabled = false;
-                            if (btnSubmitText) btnSubmitText.innerText = 'Tambahkan ke Galeri';
-                        });
-                    }
                 });
             }
         });
